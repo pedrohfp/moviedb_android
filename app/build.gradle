@@ -6,6 +6,8 @@ apply plugin: 'kotlin-android-extensions'
 
 apply from: "$rootDir/tools/linters.gradle"
 
+apply from: "$rootDir/tools/jacoco.gradle"
+
 android {
     compileSdkVersion 28
     defaultConfig {
@@ -17,9 +19,20 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
+        debug {
+            testCoverageEnabled true
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    testOptions {
+        execution 'ANDROID_TEST_ORCHESTRATOR'
+        animationsDisabled true
+
+        unitTests {
+            includeAndroidResources = true
         }
     }
 }
