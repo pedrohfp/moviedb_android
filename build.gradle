@@ -32,6 +32,6 @@ extensions.versions = [
         test : [
                 junit: '4.12',
                 runner: '1.0.2',
-                expresso: '3.0.2'
+                espresso: '3.0.2'
         ]
 ]
